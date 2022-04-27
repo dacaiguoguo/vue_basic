@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"></meta>
+        <title>初始Vue2</title>
+        <!-- 引入Vue -->
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <!-- 准备好一个容器 -->
+        <div id="root">
+            <h1>名称 {{name}}</h1>
+            <h1>年龄 {{age}}</h1>
+        </div>
+        <script type="text/javascript">
+            // 关闭提示
+            Vue.config.productionTip = false
+            const x = new Vue({
+                el: "#root",// 用于指定当前vue实例为哪个容器服务，值通常为css选择字符串
+                data: {
+                    name: '颠三倒四',
+                    age: 29
+                }
+            })
+
+        </script>
+    </body>
+</html>
