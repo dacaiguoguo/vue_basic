@@ -15,7 +15,7 @@
         <h1>名称 {{name}}</h1>
         <h1>年龄 {{age + 10}}</h1>
         <a v-bind:href="school.url" v-bind:x="hello"></a>
-        单向数据绑定：<input type="text" v-bind:value="name"><br/>
+        单向数据绑定：<input type="text" v-bind:value="name"><br />
         双向数据绑定：<input type="text" v-model:value="name">
 
     </div>
@@ -24,21 +24,31 @@
         Vue.config.productionTip = false
         const x = new Vue({
             // el: "#root",// 用于指定当前vue实例为哪个容器服务，值通常为css选择字符串
-            data: {
-                name: '颠三倒四',
-                hello: "你好",
-                age: 29,
-                school: {
-                    url: "https://cn.vuejs.org/v2/guide/installation.html#Vue-Devtools",
-                    hello: "good"
+            // data: {
+            //     name: '颠三倒四',
+            //     hello: "你好",
+            //     age: 29,
+            //     school: {
+            //         url: "https://cn.vuejs.org/v2/guide/installation.html#Vue-Devtools",
+            //         hello: "good"
+            //     }
+            // }
+            data() {
+                console.log('@@@', this)
+                return {
+                    name: '颠三倒四',
+                    hello: "你好",
+                    age: 29,
+                    school: {
+                        url: "https://cn.vuejs.org/v2/guide/installation.html#Vue-Devtools",
+                        hello: "good"
+                    }
                 }
             }
         })
 
-        console.log(x)
-        setTimeout(() => {
-            x.$mount("#root")
-        }, 1000);
+        console.log('xxx', x)
+        x.$mount("#root")
     </script>
 </body>
 
