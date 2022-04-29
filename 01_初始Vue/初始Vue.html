@@ -16,9 +16,10 @@
         <h1>年龄 {{age + 10}}</h1>
         <a v-bind:href="school.url" v-bind:x="hello"></a>
         单向数据绑定：<input type="text" :value="name"><br />
-        双向数据绑定：<input type="text" v-model="name">
-        <br />
-        <button @click="showInfo">点我一下</button>
+        双向数据绑定：<input type="text" v-model="name"><br />
+        
+        <button @click="showInfo1">点我一下1</button><br />
+        <button @click="showInfo2(66, $event)">点我一下2</button><br />
 
     </div>
     <script type="text/javascript">
@@ -48,8 +49,12 @@
                 }
             },
             methods: {
-                showInfo() {
-                    console.log(this)
+                showInfo1(event) {
+                    console.log(event.target.innerText)
+                    alert("同学你好")
+                },
+                showInfo2(a, b, c, d) {
+                    console.log(a,b)
                     alert("同学你好")
                 }
             }
