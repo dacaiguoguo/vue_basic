@@ -24,7 +24,7 @@
         <br /><br />
         姓：<input type="text" v-model="xing"><br /><br />
         名：<input type="text" v-model="ming"><br /><br />
-        姓名：<span>{{fullName()}}</span><br />
+        姓名：<span>{{fullName}}</span><br />
     </div>
     <script type="text/javascript">
         // 关闭提示
@@ -46,15 +46,17 @@
                     hello: "你好",
                     xing: "张",
                     ming: "三",
-                    fullName: function () {
-                        return this.xing + '-' +  this.ming
-                    },
                     age: 29,
                     school: {
                         url: "https://cn.vuejs.org/v2/guide/installation.html#Vue-Devtools",
                         hello: "good"
                     }
                 }
+            },
+            computed: {
+                fullName: function () {
+                        return this.xing + '-' +  this.ming
+                    },
             },
             methods: {
                 showInfo1(event) {
