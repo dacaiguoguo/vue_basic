@@ -17,10 +17,14 @@
         <a v-bind:href="school.url" v-bind:x="hello"></a>
         单向数据绑定：<input type="text" :value="name"><br />
         双向数据绑定：<input type="text" v-model="name"><br />
-        
+
         <button @click="showInfo1">点我一下1</button><br />
         <button @click="showInfo2(66, $event)">点我一下2</button><br />
 
+        <br /><br />
+        姓：<input type="text" v-model="xing"><br /><br />
+        名：<input type="text" v-model="ming"><br /><br />
+        姓名：<span>{{fullName()}}</span><br />
     </div>
     <script type="text/javascript">
         // 关闭提示
@@ -36,11 +40,12 @@
             //         hello: "good"
             //     }
             // }
-            data: function () {
-                console.log('@@@', this)
+            data() {
                 return {
                     name: '颠三倒四',
                     hello: "你好",
+                    xing: "张",
+                    ming: "三",
                     age: 29,
                     school: {
                         url: "https://cn.vuejs.org/v2/guide/installation.html#Vue-Devtools",
@@ -54,8 +59,11 @@
                     alert("同学你好")
                 },
                 showInfo2(a, b, c, d) {
-                    console.log(a,b)
+                    console.log(a, b)
                     alert("同学你好")
+                },
+                fullName() {
+                    return this.xing + '-' + this.ming
                 }
             }
         })
