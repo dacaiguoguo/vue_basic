@@ -46,6 +46,9 @@
                     hello: "你好",
                     xing: "张",
                     ming: "三",
+                    fullName: function () {
+                        return this.xing + '-' +  this.ming
+                    },
                     age: 29,
                     school: {
                         url: "https://cn.vuejs.org/v2/guide/installation.html#Vue-Devtools",
@@ -62,7 +65,7 @@
                     console.log(a, b)
                     alert("同学你好")
                 },
-                fullName() {
+                fullName1() {
                     return this.xing + '-' + this.ming
                 }
             }
