@@ -13,7 +13,7 @@
     <!-- 准备好一个容器 -->
     <div id="root">
         <h1>名称 {{name}}</h1>
-        <h1>年龄 {{age + 10}}</h1>
+        <h1>年龄 {{age}}</h1>
         <a v-bind:href="school.url" v-bind:x="hello"></a>
         单向数据绑定：<input type="text" :value="name"><br />
         双向数据绑定：<input type="text" v-model="name"><br />
@@ -29,7 +29,7 @@
     <script type="text/javascript">
         // 关闭提示
         Vue.config.productionTip = false
-        const x = new Vue({
+        const vm = new Vue({
             // el: "#root",// 用于指定当前vue实例为哪个容器服务，值通常为css选择字符串
             // data: {
             //     name: '颠三倒四',
@@ -46,7 +46,7 @@
                     hello: "你好",
                     xing: "张",
                     ming: "三",
-                    age: 29,
+                    age: 9,
                     school: {
                         url: "https://cn.vuejs.org/v2/guide/installation.html#Vue-Devtools",
                         hello: "good"
@@ -54,9 +54,11 @@
                 }
             },
             computed: {
-                fullName: function () {
-                        return this.xing + '-' +  this.ming
-                    },
+                fullName: {
+                    get() {
+                        return this.xing + '-' + this.ming
+                    }
+                },
             },
             methods: {
                 showInfo1(event) {
@@ -73,8 +75,8 @@
             }
         })
 
-        console.log('xxx', x)
-        x.$mount("#root")
+        console.log('xxx', vm)
+        vm.$mount("#root")
     </script>
 </body>
 

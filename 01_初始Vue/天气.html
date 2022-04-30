@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>天气</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>今天天气很{{weather}}</h1> <br/>
+        <button @click="switchWeather">点我切换天气</button>
+    </div>
+    <script type="text/javascript">
+        // 关闭提示
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data() {
+                return {
+                    weather: '炎热'
+                }
+            },
+            methods: {
+                switchWeather(event) {
+                    if (this.weather == '炎热') {
+                        this.weather = '凉爽'
+                    } else {
+                        this.weather = '炎热'
+                    }
+                }
+            }
+        })
+
+        console.log('xxx', vm)
+        vm.$mount("#root")
+    </script>
+</body>
+
+</html>
