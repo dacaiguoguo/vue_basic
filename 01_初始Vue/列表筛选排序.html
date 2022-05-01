@@ -20,9 +20,9 @@
             </li>
         </ul>
         <br />
-        <button @click="sort='up'">年龄升序</button>
-        <button @click="sort='down'">年龄降序</button>
-        <button @click="sort='none'">原始排序</button>
+        <button @click="sortType='up'">年龄升序</button>
+        <button @click="sortType='down'">年龄降序</button>
+        <button @click="sortType='none'">原始排序</button>
 
     </div>
     <script type="text/javascript">
@@ -37,24 +37,23 @@
                     { id: '004', name: '温兆伦', age: 22, sex: '男' },
                 ],
                 keyworkd: "",
-                sort: 'none'
+                sortType: 'none'
             },
             computed: {
                 filterPersons() {
-                    const retarr = this.persons.filter((p) => {
+                    const result = this.persons.filter((p) => {
                         return p.name.includes(this.keyworkd)
                     })
-                    console.log(this.sort)
-                    if (this.sort === 'up') {
-                        return retarr.sort((p1, p2) => {
+                    if (this.sortType === 'up') {
+                        return result.sort((p1, p2) => {
                             return p1.age - p2.age
                         })
-                    } else if (this.sort === 'down') {
-                        return retarr.sort((p1, p2) => {
+                    } else if (this.sortType === 'down') {
+                        return result.sort((p1, p2) => {
                             return p2.age - p1.age
                         })
                     }
-                    return retarr;
+                    return result;
                 }
             },
             watch: {
