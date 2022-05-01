@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>列表筛选排序</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h3>人员列表</h3>
+        <input type="text" v-model="keyworkd">
+        <ul>
+            <li v-for="(p, index) in filterPersons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.sex}}
+            </li>
+        </ul>
+        <br />
+        <button @click="sort='up'">年龄升序</button>
+        <button @click="sort='down'">年龄降序</button>
+        <button @click="sort='none'">原始排序</button>
+
+    </div>
+    <script type="text/javascript">
+        // 关闭提示
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data: {
+                persons: [
+                    { id: '001', name: '马冬梅', age: 19, sex: '女' },
+                    { id: '002', name: '周冬雨', age: 20, sex: '女' },
+                    { id: '003', name: '周杰伦', age: 21, sex: '男' },
+                    { id: '004', name: '温兆伦', age: 22, sex: '男' },
+                ],
+                keyworkd: "",
+                sort: 'none'
+            },
+            computed: {
+                filterPersons() {
+                    let retarr = this.persons.filter((p) => {
+                        return p.name.includes(this.keyworkd)
+                    })
+                    console.log(this.sort)
+                    if (this.sort === 'up') {
+                        let retarrsorted = retarr.sort((p1, p2) => {
+                            if (p1.age > p2.age) {
+                                return 1
+                            }
+                            if (p1.age < p2.age) {
+                                return -1
+                            }
+                            return 0
+                        })
+                        console.log('retarrsorted up', retarrsorted)
+                        return retarrsorted;
+                    } else if (this.sort === 'down') {
+                        let retarrsorted = retarr.sort((p1, p2) => {
+                            if (p1.age > p2.age) {
+                                return -1
+                            }
+                            if (p1.age < p2.age) {
+                                return 1
+                            }
+                            return 0
+                        })
+                        console.log('retarrsorted down', retarrsorted)
+                        return retarrsorted;
+                    }
+                    return retarr;
+                }
+            },
+            watch: {
+                sort(val) {
+
+                }
+            }
+        })
+        vm.$mount("#root")
+    </script>
+</body>
+
+</html>
