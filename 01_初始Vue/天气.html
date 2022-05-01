@@ -7,13 +7,27 @@
     <title>天气</title>
     <!-- 引入Vue -->
     <script src="../js/vue.js"></script>
+    <style>
+        .demo {
+            background-color: aqua;
+        }
+
+        .demo2 {
+            background-color: pink;
+        }
+
+        button {
+            padding: 15px;
+        }
+    </style>
 </head>
 
 <body>
     <!-- 准备好一个容器 -->
     <div id="root">
         <h1>今天天气很{{currentWeather}}</h1> <br/>
-        <button @click="switchWeather">点我切换天气</button>
+        <button class="demo" @click="switchWeather">点我切换天气</button>
+        <button class="demo2" @click="isHot = !isHot">点我切换天气</button>
     </div>
     <script type="text/javascript">
         // 关闭提示
