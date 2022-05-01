@@ -21,18 +21,17 @@
         const vm = new Vue({
             data() {
                 return {
-                    index:0,
-                    weatherList: ['炎热','凉爽']
+                    isHot:true
                 }
             },
             computed: {
                 currentWeather() {
-                    return this.weatherList[this.index]
+                    return this.isHot?'炎热': '凉爽'
                 }
             },
             methods: {
                 switchWeather(event) {
-                    this.index = (this.index + 1) % 2
+                    this.isHot = !this.isHot
                 }
             }
         })
