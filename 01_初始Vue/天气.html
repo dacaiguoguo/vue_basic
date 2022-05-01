@@ -25,7 +25,7 @@
 <body>
     <!-- 准备好一个容器 -->
     <div id="root">
-        <h1>今天天气很{{currentWeather}}</h1> <br/>
+        <h1>今天天气很{{currentWeather}}</h1> <br />
         <button class="demo" @click="switchWeather">点我切换天气</button>
         <button class="demo2" @click="isHot = !isHot">点我切换天气</button>
     </div>
@@ -35,23 +35,37 @@
         const vm = new Vue({
             data() {
                 return {
-                    isHot:true
+                    isHot: true
                 }
             },
             computed: {
                 currentWeather() {
-                    return this.isHot?'炎热': '凉爽'
+                    return this.isHot ? '炎热' : '凉爽'
                 }
             },
             methods: {
                 switchWeather(event) {
                     this.isHot = !this.isHot
                 }
+            },
+            watch: {
+                isHot: {
+                    immediate: true,// 初始化是是否调用
+                    handler(newValue, oldValue) {
+                        console.log('handler', newValue, oldValue)
+                    }
+                }
             }
         })
 
         console.log('xxx', vm)
         vm.$mount("#root")
+        vm.$watch('currentWeather', {
+            immediate: true,// 初始化是是否调用
+            handler(newValue, oldValue) {
+                console.log('handler', newValue, oldValue)
+            }
+        })
     </script>
 </body>
 
