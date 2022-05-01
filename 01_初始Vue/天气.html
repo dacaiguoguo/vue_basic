@@ -12,7 +12,7 @@
 <body>
     <!-- 准备好一个容器 -->
     <div id="root">
-        <h1>今天天气很{{weather}}</h1> <br/>
+        <h1>今天天气很{{currentWeather}}</h1> <br/>
         <button @click="switchWeather">点我切换天气</button>
     </div>
     <script type="text/javascript">
@@ -21,16 +21,18 @@
         const vm = new Vue({
             data() {
                 return {
-                    weather: '炎热'
+                    index:0,
+                    weatherList: ['炎热','凉爽']
+                }
+            },
+            computed: {
+                currentWeather() {
+                    return this.weatherList[this.index]
                 }
             },
             methods: {
                 switchWeather(event) {
-                    if (this.weather == '炎热') {
-                        this.weather = '凉爽'
-                    } else {
-                        this.weather = '炎热'
-                    }
+                    this.index = (this.index + 1) % 2
                 }
             }
         })
