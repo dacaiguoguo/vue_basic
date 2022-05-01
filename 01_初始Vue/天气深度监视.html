@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>天气深度监视</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+    <style>
+        .demo {
+            background-color: aqua;
+        }
+
+        .demo2 {
+            background-color: pink;
+        }
+
+        button {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>今天天气很{{currentWeather}}</h1> <br />
+        <button class="demo" @click="switchWeather">点我切换天气</button>
+        <button class="demo2" @click="isHot = !isHot">点我切换天气</button>
+        <hr />
+        <h3>显示数据{{numbers.a}}</h3><br />
+        <button @click="aplus">点我让a+1</button><br />
+        <h3>显示数据{{numbers.b}}</h3><br />
+        <button @click="bplus">点我让b+1</button>
+    </div>
+    <script type="text/javascript">
+        // 关闭提示
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data() {
+                return {
+                    isHot: true,
+                    numbers: {
+                        a: 1,
+                        b: 1
+                    }
+                }
+            },
+            computed: {
+                currentWeather() {
+                    return this.isHot ? '炎热' : '凉爽'
+                }
+            },
+            methods: {
+                switchWeather(event) {
+                    this.isHot = !this.isHot
+                },
+                aplus() {
+                    this.numbers.a = this.numbers.a + 1
+                },
+                bplus() {
+                    this.numbers.b = this.numbers.b + 1
+                }
+            },
+            watch: {
+                isHot: {
+                    // immediate: true,// 初始化是是否调用
+                    handler(newValue, oldValue) {
+                        console.log('handler', newValue, oldValue)
+                    }
+                },
+                'numbers': {
+                    deep: true,
+                    handler(newValue, oldValue) {
+                        console.log('handler', newValue, oldValue)
+                    }
+                }
+            }
+        })
+
+        console.log('xxx', vm)
+        vm.$mount("#root")
+    </script>
+</body>
+
+</html>
