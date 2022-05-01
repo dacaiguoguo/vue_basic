@@ -13,9 +13,9 @@
     <!-- 准备好一个容器 -->
     <div id="root">
         <h3>人员列表</h3>
-        <input type="text" v-model="filter" v-on:keyup.enter="filterAction">
+        <input type="text" v-model="keyworkd">
         <ul>
-            <li v-for="(p, index) in persons" :key="p.id">
+            <li v-for="(p, index) in filterPersons" :key="p.id">
                 {{p.name}}-{{p.age}}-{{p.sex}}
             </li>
         </ul>
@@ -31,14 +31,25 @@
                     { id: '003', name: '周杰伦', age: 21, sex: '男' },
                     { id: '004', name: '温兆伦', age: 22, sex: '男' },
                 ],
-                filter: ""
+                keyworkd: "",
+                filterPersons:[]
             },
             computed: {
+            },
+            watch: {
+                keyworkd:{
+                    immediate:true,
+                    handler(val) {
+                        this.filterPersons = this.persons.filter((p)=>{
+                            return p.name.includes(val)
+                        })
+                    }
+                }
             },
             methods: {
                 filterAction(event) {
                     console.log(event.target.value)
-                    // console.log(this.filter)
+                    // console.log(this.keyworkd)
                     const plist = [
                         { id: '001', name: '马冬梅', age: 19, sex: '女' },
                         { id: '002', name: '周冬雨', age: 20, sex: '女' },
@@ -47,15 +58,13 @@
                     ];
                     // 
                     this.persons = plist.filter(function(p){ //(p) => {
-                        //console.log(this.filter)
+                        //console.log(this.keyworkd)
                         // 这里要用this  要用vm 必须写箭头函数
-                        // return p.name.includes(this.filter)
+                        // return p.name.includes(this.keyworkd)
                         // 这种写法不依赖this，可以写普通函数 也可以写箭头函数
                         return p.name.includes(event.target.value)
                     })
                 }
-            },
-            watch: {
             }
         })
         vm.$mount("#root")
