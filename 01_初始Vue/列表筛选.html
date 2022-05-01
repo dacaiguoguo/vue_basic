@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>天气深度监视</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h3>人员列表</h3>
+        <input type="text" v-model="filter" v-on:keyup.enter="filterAction">
+        <ul>
+            <li v-for="(p, index) in persons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.sex}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        // 关闭提示
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data: {
+                persons: [
+                    { id: '001', name: '马冬梅', age: 19, sex: '女' },
+                    { id: '002', name: '周冬雨', age: 20, sex: '女' },
+                    { id: '003', name: '周杰伦', age: 21, sex: '男' },
+                    { id: '004', name: '温兆伦', age: 22, sex: '男' },
+                ],
+                filter: ""
+            },
+            computed: {
+            },
+            methods: {
+                filterAction(event) {
+                    console.log(event.target.value)
+                    // console.log(this.filter)
+                    const plist = [
+                        { id: '001', name: '马冬梅', age: 19, sex: '女' },
+                        { id: '002', name: '周冬雨', age: 20, sex: '女' },
+                        { id: '003', name: '周杰伦', age: 21, sex: '男' },
+                        { id: '004', name: '温兆伦', age: 22, sex: '男' },
+                    ];
+                    // 
+                    this.persons = plist.filter(function(p){ //(p) => {
+                        //console.log(this.filter)
+                        // 这里要用this  要用vm 必须写箭头函数
+                        // return p.name.includes(this.filter)
+                        // 这种写法不依赖this，可以写普通函数 也可以写箭头函数
+                        return p.name.includes(event.target.value)
+                    })
+                }
+            },
+            watch: {
+            }
+        })
+        vm.$mount("#root")
+    </script>
+</body>
+
+</html>
