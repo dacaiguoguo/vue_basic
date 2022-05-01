@@ -45,6 +45,7 @@
                     name: '颠三倒四',
                     hello: "你好",
                     xing: "张",
+                    fullName: '张-三',
                     ming: "三",
                     age: 9,
                     school: {
@@ -54,11 +55,11 @@
                 }
             },
             computed: {
-                fullName: {
-                    get() {
-                        return this.xing + '-' + this.ming
-                    }
-                },
+                // fullName: {
+                //     get() {
+                //         return this.xing + '-' + this.ming
+                //     }
+                // },
             },
             methods: {
                 showInfo1(event) {
@@ -71,6 +72,18 @@
                 },
                 fullName1() {
                     return this.xing + '-' + this.ming
+                }
+            },
+            watch: {
+                xing(val) {
+                    // 注意这里的箭头函数是必须的。使函数内没有自己的this。向外寻找到xing(val)的this。也就是vm。
+                    // 如果写普通函数，就有了自己的this。就是调用者了。
+                    setTimeout(() => {
+                        this.fullName = val + '-' + this.ming
+                    }, 1000);
+                },
+                ming(val) {
+                    this.fullName = this.xing + '-' + val
                 }
             }
         })
