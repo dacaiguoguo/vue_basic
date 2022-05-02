@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>表单数据收集</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <form action="">
+            <label for="demo">账号: </label>
+            <input type="text" id="demo" v-model="account"> <br/><br/>
+            <label for="pass">密码: </label>
+            <input type="password" id="pass" v-model="password"><br/><br/>
+            性别:
+            <label for="xingbie1">男: </label>
+            <input type="radio" id="xingbie1" name="sex" v-model="sex" value="male">
+            <label for="xingbie2">女: </label>
+            <input type="radio" id="xingbie2" name="sex" v-model="sex" value="female"><br/><br/>
+            爱好:
+            吃饭 <input type="checkbox" v-model="hobby" value="eat">
+            睡觉 <input type="checkbox" v-model="hobby" value="sleep">
+            游戏 <input type="checkbox" v-model="hobby" value="game"><br/><br/>
+            所属校区
+            <select v-model="school">
+                <option value="">请选择校区</option>
+                <option value="东北校区">东北校区</option>
+                <option value="西北校区">西北校区</option>
+                <option value="东南校区">东南校区</option>
+                <option value="西南校区">西南校区</option>
+            </select>
+            <br/><br/>
+            其他信息:
+            <textarea  v-model="otherInfo"></textarea>
+            <br/><br/>
+            <input type="checkbox" v-model="agree">阅读并接受<a href="http://www.baidu.com">《用户协议》</a>
+        </form>
+    </div>
+    <script type="text/javascript">
+        // 关闭提示
+        Vue.config.productionTip = false
+        new Vue({
+            el:"#root",
+            data:{
+                account:"",
+                password:"",
+                sex:"male",
+                hobby:[],
+                school:"",
+                otherInfo:"",
+                agree: true
+            }
+        })
+    </script>
+</body>
+
+</html>
