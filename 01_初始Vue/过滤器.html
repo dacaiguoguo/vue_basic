@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>表单数据收集</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <!-- 计算属性实现 -->
+        <h3>现在时间是：{{fmtTime}}</h3>
+        <!-- methods实现 -->
+        <h3>现在时间是：{{cfmtTime()}}</h3>
+        <!-- 过滤器实现 -->
+        <h3>现在时间是：{{userInfo.time | timeFormatter}}</h3>
+        <h3>现在时间是：{{userInfo.time | timeFormatter('YYYY-MM-DD') | mySlice}}</h3>
+    </div>
+
+    <div id="root2">
+        <h3>测试全局过滤器：{{msg | mySlice}}</h3>
+    </div>
+    <script type="text/javascript">
+        // 关闭提示
+        Vue.config.productionTip = false
+        // 全局过滤器
+        Vue.filter('mySlice', function (val) {
+            return val.slice(0, 4)
+        })
+        new Vue({
+            el: "#root",
+            data: {
+                userInfo: {
+                    time: 1651492217855
+                }
+            },
+            computed: {
+                fmtTime() {
+                    return dayjs(this.userInfo.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            methods: {
+                cfmtTime() {
+                    return dayjs(this.userInfo.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            // 局部过滤器
+            filters: {
+                timeFormatter(val, str = 'YYYY-MM-DD HH:mm:ss') {
+                    return dayjs(val).format(str)
+                },
+                // mySlice(val) {
+                //     return val.slice(0, 4)
+                // }
+            }
+        })
+        new Vue({
+            el: "#root2",
+            data: {
+                msg: "hello good"
+            },
+        })
+    </script>
+</body>
+
+</html>
