@@ -17,6 +17,9 @@
         <h3>现在n是：<span v-text="n"></span></h3>
         <h3 >现在n放大10倍是：<span v-big="n"></span></h3>
         <button @click="n++">点我n+1</button>
+        <hr/>
+        <input type="text" v-bind:value="n">
+        <input type="text" v-fbind:value="n">
     </div>
     <script type="text/javascript">
         // 关闭提示
@@ -30,6 +33,10 @@
                 // 自定义指令
                 big(element, binding) {
                     element.innerText = binding.value * 10
+                },
+                fbind(e, binding){
+                    e.value = binding.value * 10   
+                    e.focus()
                 }
             }
         })

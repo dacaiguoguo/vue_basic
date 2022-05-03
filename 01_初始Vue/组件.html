@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>组件</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <school></school>
+        <hr/>
+        <student></student>
+        <student></student>
+        <student></student>
+    </div>
+    <script type="text/javascript">
+
+        const school = Vue.extend({
+            name: 'school',
+            data() {
+                return {
+                    name: '好学校',
+                    address: '好地址'
+                }
+            },
+            template: `
+            <div>
+                <h3>{{name}}</h3>
+                <h3>{{address}}</h3>
+            </div>
+            `
+        })
+
+        const student = Vue.extend({
+            name: 'student',
+            data() {
+                return {
+                    name: '小明',
+                    age: 12
+                }
+            },
+            template: `
+            <div>
+            <h3>姓名：{{name}}， 年龄 {{age}}</h3>
+            </div>
+            `
+        })
+
+        // 关闭提示
+        Vue.config.productionTip = false
+        new Vue({
+            el: "#root",
+            components: {
+                school,
+                student
+            }
+        })
+    </script>
+</body>
+
+</html>
