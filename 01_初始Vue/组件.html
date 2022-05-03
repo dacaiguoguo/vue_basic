@@ -14,28 +14,9 @@
     <!-- 准备好一个容器 -->
     <div id="root">
         <school></school>
-        <hr/>
-        <student></student>
-        <student></student>
-        <student></student>
+        <hr />
     </div>
     <script type="text/javascript">
-
-        const school = Vue.extend({
-            name: 'school',
-            data() {
-                return {
-                    name: '好学校',
-                    address: '好地址'
-                }
-            },
-            template: `
-            <div>
-                <h3>{{name}}</h3>
-                <h3>{{address}}</h3>
-            </div>
-            `
-        })
 
         const student = Vue.extend({
             name: 'student',
@@ -51,14 +32,36 @@
             </div>
             `
         })
+        const school = Vue.extend({
+            name: 'school',
+            data() {
+                return {
+                    name: '好学校',
+                    address: '好地址'
+                }
+            },
+            components: {
+                student
+            },
+            template: `
+            <div>
+                <h3>{{name}}</h3>
+                <h3>{{address}}</h3>
+                <student></student>
+                <student></student>
+                <student></student>
+            </div>
+            `
+        })
+
+
 
         // 关闭提示
         Vue.config.productionTip = false
         new Vue({
             el: "#root",
             components: {
-                school,
-                student
+                school
             }
         })
     </script>
