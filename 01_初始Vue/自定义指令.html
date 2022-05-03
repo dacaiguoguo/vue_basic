@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>自定义指令</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <!-- 计算属性实现 -->
+        <h3>现在n是：<span v-text="n"></span></h3>
+        <h3 >现在n放大10倍是：<span v-big="n"></span></h3>
+        <button @click="n++">点我n+1</button>
+    </div>
+    <script type="text/javascript">
+        // 关闭提示
+        Vue.config.productionTip = false
+        new Vue({
+            el: "#root",
+            data: {
+                n:1
+            },
+            directives: {
+                // 自定义指令
+                big(element, binding) {
+                    element.innerText = binding.value * 10
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
