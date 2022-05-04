@@ -2,7 +2,8 @@
 <div>
   <img src="./assets/logo.png" alt="logo">
   <SchoolCom></SchoolCom>
-  <StudentCom></StudentCom>
+  <StudentCom name="张三" age="18"></StudentCom>
+  <StudentCom name="王老五" :age="20"></StudentCom>
 </div>
 </template>
 
