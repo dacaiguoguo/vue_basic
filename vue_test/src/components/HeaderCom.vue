@@ -1,22 +1,21 @@
 <template>
-  <div class="demo">
-    <h3>{{ name }}</h3>
-    <h3>{{ age + 1 }}</h3>
-    <button @click="showName">点我提示学生名称</button>
+  <div>
+    <input type="text" placeholder="请输入后回车添加" v-model="inputValue" v-on:keyup.enter="addOne(inputValue, $event)">
   </div>
 </template>
 
 <script>
 
 export default {
-  name: "StudentCom",
+  name: "HeaderCom",
   data() {
     return {
+      inputValue:""
     };
   },
   methods: {
-      showName() {
-          alert(this.name)
+      addOne(inputVal) {
+        console.log('addOne', inputVal)
       }
   },
   props:['name', 'age']

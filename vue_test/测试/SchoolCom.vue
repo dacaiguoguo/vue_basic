@@ -1,8 +1,8 @@
 <template>
   <div class="demo">
-    <h3>{{ name }}</h3>
+    <!-- <h3>{{ name }}</h3>
     <h3>{{ add }}</h3>
-    <button @click="showName">点我提示学习名称</button>
+    <button @click="showName">点我提示学习名称</button> -->
   </div>
 </template>
 

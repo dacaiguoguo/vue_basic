@@ -2,7 +2,7 @@
   <div class="demo">
     <h3>{{ name }}</h3>
     <h3>{{ age + 1 }}</h3>
-    <button @click="showName">点我提示学生名称</button>
+    <button @click="showName">点我提示学生名称2</button>
   </div>
 </template>
 

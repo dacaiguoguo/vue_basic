@@ -1,15 +1,18 @@
 <template>
   <div class="demo">
-    <h3>{{ name }}</h3>
-    <h3>{{ age + 1 }}</h3>
-    <button @click="showName">点我提示学生名称</button>
+    <ItemCom></ItemCom>
   </div>
 </template>
 
 <script>
 
+import ItemCom from "./ItemCom";
+
 export default {
-  name: "StudentCom",
+  name: "ListCom",
+  components:{
+    ItemCom
+  },
   data() {
     return {
     };
@@ -19,7 +22,7 @@ export default {
           alert(this.name)
       }
   },
-  props:['name', 'age']
+  // props:['name', 'age']
 };
 </script>
 
