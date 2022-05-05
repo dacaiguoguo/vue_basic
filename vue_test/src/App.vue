@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderCom name="HeaderCom" :addOne="addOne"></HeaderCom>
+    <HeaderCom :addOne="addOne"></HeaderCom>
     <hr />
     <ListCom name="ListCom" :todoList="todoList"></ListCom>
     <hr />
@@ -24,8 +24,7 @@ export default {
     };
   },
   methods: {
-    addOne(inputVal, event) {
-      console.log("addOne", inputVal, event.target.value);
+    addOne(inputVal){ 
       this.todoList.unshift({ id: "00" + String(this.todoList.length + 1), title: inputVal, done: false })
     },
   },
