@@ -1,28 +1,30 @@
 <template>
-  <div class="demo">
-    <h3>{{ name }}</h3>
+  <div>
+    <label>all：<input type="checkbox" v-model="isAll" /></label>
+    &nbsp;&nbsp;&nbsp; done{{ doneNum }} /total{{ allNUm }}
+    <button @click="deleteAllDone">delete all done</button>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "FooterCom",
-  data() {
-    return {
-    };
-  },
+  props: ["doneNum", "allNUm", "checkAll", "deleteDoneItem"],
   methods: {
-      showName() {
-          alert(this.name)
-      }
+    deleteAllDone() {
+      this.deleteDoneItem();
+    },
   },
-  props:['name', 'age']
+  computed: {
+    isAll: {
+      get() {
+        return this.doneNum === this.allNUm;
+      },
+      set(value) {
+        this.checkAll(value);
+      },
+    },
+  },
 };
 </script>
 
-<style scope>
-.demo {
-  background-color: gray;
-}
-</style>

@@ -1,6 +1,7 @@
 <template>
   <div class="demo">
-    <h3>点我提示学生名称33</h3>
+    <input type="checkbox" v-model="done" @click="change()">
+    <h3>{{item.title}}</h3>
   </div>
 </template>
 
@@ -10,14 +11,19 @@ export default {
   name: "ItemCom",
   data() {
     return {
+      done: this.item.done
     };
   },
   methods: {
       showName() {
           alert(this.name)
+      }, 
+      change() {
+        console.log('item done', this.done)
+        this.changeItem(this.item)
       }
   },
-  props:['name', 'age']
+  props:['item', 'changeItem']
 };
 </script>
 

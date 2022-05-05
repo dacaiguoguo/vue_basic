@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" placeholder="请输入后回车添加" v-model="inputValue" v-on:keyup.enter="addOne(inputValue, $event)">
+    <input type="text" placeholder="请输入后回车添加" v-model="inputValue" @keyup.enter="addOne(inputValue, $event)">
   </div>
 </template>
 
@@ -14,16 +14,16 @@ export default {
     };
   },
   methods: {
-      addOne(inputVal) {
-        console.log('addOne', inputVal)
+      addOne(inputVal, event) {
+        console.log('addOne', inputVal, event.target.value)
       }
   },
   props:['name', 'age']
 };
 </script>
 
-<style scope>
-.demo {
-  background-color: gray;
-}
+<style scoped>
+    div {
+        background: antiquewhite;
+    }
 </style>
