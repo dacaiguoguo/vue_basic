@@ -6,6 +6,7 @@
       name="ListCom"
       :todoList="todoList"
       :changeItem="changeItem"
+      :deleteItem="deleteItem"
     ></ListCom>
     <hr />
     <FooterCom name="FooterCom"></FooterCom>
@@ -40,6 +41,11 @@ export default {
         if (item.id === eitemid) {
           item.done = !item.done;
         }
+      });
+    },
+    deleteItem(eitemid) {
+      this.todoList = this.todoList.filter((item) => {
+        return item.id !== eitemid
       });
     },
   },

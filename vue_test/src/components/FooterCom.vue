@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>all：<input type="checkbox" v-model="isAll" /></label>
-    &nbsp;&nbsp;&nbsp; done{{ doneNum }} /total{{ allNUm }}
+   done{{ doneNum }} /total{{ allNUm }}
     <button @click="deleteAllDone">delete all done</button>
   </div>
 </template>

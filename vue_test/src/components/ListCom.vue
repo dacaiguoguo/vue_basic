@@ -6,6 +6,7 @@
         :key="todoitem.id"
         :item="todoitem"
         :changeItem="changeItem"
+        :deleteItem="deleteItem"
       ></ItemCom>
     </ul>
   </div>
