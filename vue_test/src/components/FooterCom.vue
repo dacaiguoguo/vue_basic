@@ -1,8 +1,8 @@
 <template>
   <div>
-    <label>all：<input type="checkbox" v-model="isAll" /></label>
-   done{{ doneNum }} /total{{ allNUm }}
-    <button @click="deleteAllDone">delete all done</button>
+    <label>全部完成：<input type="checkbox" v-model="isAll" /></label>
+   已完成{{ doneNum }} /全部{{ allNUm }}
+    <button @click="deleteAllDone">删除所有事件</button>
   </div>
 </template>
 

@@ -9,7 +9,7 @@
       :deleteItem="deleteItem"
     ></ListCom>
     <hr />
-    <FooterCom name="FooterCom"></FooterCom>
+    <FooterCom :doneNum="doneNum" :allNUm="todoList.length" :checkAll="checkAll"></FooterCom>
   </div>
 </template>
 
@@ -45,8 +45,18 @@ export default {
     },
     deleteItem(eitemid) {
       this.todoList = this.todoList.filter((item) => {
-        return item.id !== eitemid
+        return item.id !== eitemid;
       });
+    },
+    checkAll(val) {
+      this.todoList.forEach((item) => {
+        item.done = val;
+      });
+    },
+  },
+  computed: {
+    doneNum() {
+      return this.todoList.reduce((pre, todo) => pre + (todo.done ? 1 : 0), 0);
     },
   },
   components: {
