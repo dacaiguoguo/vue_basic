@@ -19,11 +19,14 @@ export default {
   },
   methods: {
     addOneTodo() {
+      if (!this.inputValue) {
+        return;
+      }
       this.addOne(this.inputValue);
-      this.inputValue = ""
+      this.inputValue = "";
     },
   },
-  props: ["addOne"],
+  props: ["addOne", "changeItem"],
 };
 </script>
 

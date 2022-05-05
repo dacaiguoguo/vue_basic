@@ -19,18 +19,7 @@ export default {
   components: {
     ItemCom,
   },
-  data() {
-    return {
-
-    };
-  },
-  props: ["todoList", "deleteItem"],
-  methods: {
-    changeItem(eitem) {
-      console.log('changeItem', eitem);
-      eitem.done = !eitem.done
-    },
-  },
+  props: ["todoList", "deleteItem", "changeItem"],
 };
 </script>
 

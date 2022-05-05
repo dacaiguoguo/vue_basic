@@ -2,7 +2,11 @@
   <div>
     <HeaderCom :addOne="addOne"></HeaderCom>
     <hr />
-    <ListCom name="ListCom" :todoList="todoList"></ListCom>
+    <ListCom
+      name="ListCom"
+      :todoList="todoList"
+      :changeItem="changeItem"
+    ></ListCom>
     <hr />
     <FooterCom name="FooterCom"></FooterCom>
   </div>
@@ -24,8 +28,19 @@ export default {
     };
   },
   methods: {
-    addOne(inputVal){ 
-      this.todoList.unshift({ id: "00" + String(this.todoList.length + 1), title: inputVal, done: false })
+    addOne(inputVal) {
+      this.todoList.unshift({
+        id: "00" + String(this.todoList.length + 1),
+        title: inputVal,
+        done: false,
+      });
+    },
+    changeItem(eitemid) {
+      this.todoList.forEach((item) => {
+        if (item.id === eitemid) {
+          item.done = !item.done;
+        }
+      });
     },
   },
   components: {
