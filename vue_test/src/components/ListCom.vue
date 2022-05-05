@@ -2,7 +2,7 @@
   <div class="demo">
     <ul>
       <ItemCom
-        v-for="todoitem in todos"
+        v-for="todoitem in todoList"
         :key="todoitem.id"
         :item="todoitem"
         :changeItem="changeItem"
@@ -21,11 +21,7 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: "001", title: "吃饭", done: true },
-        { id: "002", title: "睡觉", done: false },
-        { id: "003", title: "喝水", done: true },
-      ],
+
     };
   },
   props: ["todoList", "deleteItem"],

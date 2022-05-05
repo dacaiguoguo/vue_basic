@@ -14,11 +14,9 @@ export default {
     };
   },
   methods: {
-      addOne(inputVal, event) {
-        console.log('addOne', inputVal, event.target.value)
-      }
+
   },
-  props:['name', 'age']
+  props:['name', 'age', 'addOne']
 };
 </script>
 
