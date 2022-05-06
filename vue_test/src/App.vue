@@ -3,9 +3,9 @@
     <h2>{{ msg }}</h2>
     <hr />
     <SchoolCom :getSchoolName="getSchoolName"></SchoolCom>
-    <StudentCom v-on:focus="getStudentName"></StudentCom>
-    <!-- <StudentCom @aiguigu="getStudentName"></StudentCom> -->
-    <!-- <StudentCom ref="student" studentName="测试同学"></StudentCom> -->
+    <StudentCom v-on:atguigu="getStudentName"></StudentCom>
+    <StudentCom @atguigu="getStudentName"></StudentCom> -->
+    <StudentCom ref="student" studentName="测试同学"></StudentCom>
   </div>
 </template>
 
@@ -34,13 +34,9 @@ export default {
     SchoolCom,
     StudentCom,
   },
-  // mounted() {
-  //   // this.$refs.student.$on("atguigu", function (aaabbb) {
-  //   //   console.log("aaaa");
-  //   //   this.getStudentName(aaabbb);
-  //   // });
-  //   this.$refs.student.$on("atguigu",this.getStudentName);
-  //   // this.$refs.student.$once("atguigu", this.getStudentName);
-  // },
+  mounted() {
+    this.$refs.student.$on("atguigu",this.getStudentName);
+    // this.$refs.student.$once("atguigu", this.getStudentName);
+  },
 };
 </script>

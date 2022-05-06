@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     giveName() {
-      this.$emit('focus', this.studentName)
+      this.$emit('atguigu', this.studentName)
       // this.$emit('atguigu', this.studentName);
       console.log('giveName')
       // 注意单引号是不行的 天坑啊
