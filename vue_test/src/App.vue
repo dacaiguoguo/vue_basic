@@ -9,7 +9,13 @@
       :deleteItem="deleteItem"
     ></ListCom>
     <hr />
-    <FooterCom :doneNum="doneNum" :allNUm="todoList.length" :checkAll="checkAll"></FooterCom>
+    <FooterCom
+      v-show="todoList.length"
+      :doneNum="doneNum"
+      :allNUm="todoList.length"
+      :checkAll="checkAll"
+      :clearAll="clearAll"
+    ></FooterCom>
   </div>
 </template>
 
@@ -17,22 +23,24 @@
 import HeaderCom from "./components/HeaderCom.vue";
 import ListCom from "./components/ListCom.vue";
 import FooterCom from "./components/FooterCom.vue";
+import { nanoid } from "nanoid";
 export default {
   name: "App",
   data() {
     return {
-      todoList: [
-        { id: "001", title: "吃饭", done: true },
-        { id: "002", title: "睡觉", done: false },
-        { id: "003", title: "喝水", done: true },
-      ],
+      todoList: JSON.parse(window.localStorage.getItem("todos")) || [],
+      // todoList: [
+      //   { id: "001", title: "吃饭", done: true },
+      //   { id: "002", title: "睡觉", done: false },
+      //   { id: "003", title: "喝水", done: true },
+      // ],
     };
   },
   methods: {
-    addOne(inputVal) {
+    addOne(value) {
       this.todoList.unshift({
-        id: "00" + String(this.todoList.length + 1),
-        title: inputVal,
+        id: nanoid(),
+        title: value,
         done: false,
       });
     },
@@ -53,10 +61,24 @@ export default {
         item.done = val;
       });
     },
+    clearAll() {
+      this.todoList = this.todoList.filter((item) => {
+        return !item.done;
+      });
+      console.log(this.todoList);
+    },
   },
   computed: {
     doneNum() {
       return this.todoList.reduce((pre, todo) => pre + (todo.done ? 1 : 0), 0);
+    },
+  },
+  watch: {
+    todoList: {
+      deep: true,
+      handler(value) {
+        window.localStorage.setItem("todos", JSON.stringify(value));
+      },
     },
   },
   components: {
