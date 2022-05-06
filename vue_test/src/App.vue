@@ -3,15 +3,15 @@
     <h2>{{ msg }}</h2>
     <hr />
     <SchoolCom :getSchoolName="getSchoolName"></SchoolCom>
-    <StudentCom v-on:aiguigu="getStudentName" studentName="张三"></StudentCom>
-    <StudentCom @aiguigu="getStudentName" studentName="里斯"></StudentCom>
-    <StudentCom ref="student" studentName="测试同学"></StudentCom>
+    <StudentCom v-on:focus="getStudentName"></StudentCom>
+    <!-- <StudentCom @aiguigu="getStudentName"></StudentCom> -->
+    <!-- <StudentCom ref="student" studentName="测试同学"></StudentCom> -->
   </div>
 </template>
 
 <script>
-import StudentCom from "./components/StudentCom.vue";
 import SchoolCom from "./components/SchoolCom.vue";
+import StudentCom from "./components/StudentCom.vue";
 
 export default {
   name: "App",
@@ -25,6 +25,7 @@ export default {
       console.log(value);
     },
     getStudentName(value) {
+      console.log("getStudentName");
       console.log(value);
       // console.log(this.$refs.student);
     },
@@ -33,13 +34,13 @@ export default {
     SchoolCom,
     StudentCom,
   },
-  mounted() {
-    // this.$refs.student.$on("atguigu", function (aaabbb) {
-    //   console.log("aaaa");
-    //   this.getStudentName(aaabbb);
-    // });
-    this.$refs.student.$on("atguigu",this.getStudentName);
-    // this.$refs.student.$once("atguigu", this.getStudentName);
-  },
+  // mounted() {
+  //   // this.$refs.student.$on("atguigu", function (aaabbb) {
+  //   //   console.log("aaaa");
+  //   //   this.getStudentName(aaabbb);
+  //   // });
+  //   this.$refs.student.$on("atguigu",this.getStudentName);
+  //   // this.$refs.student.$once("atguigu", this.getStudentName);
+  // },
 };
 </script>
