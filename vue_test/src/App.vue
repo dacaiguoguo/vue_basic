@@ -3,8 +3,8 @@
     <h2>{{ msg }}</h2>
     <hr />
     <SchoolCom :getSchoolName="getSchoolName"></SchoolCom>
-    <StudentCom v-on:atguigu="getStudentName"></StudentCom>
-    <StudentCom @atguigu="getStudentName"></StudentCom> -->
+    <StudentCom v-on:atguigu="getStudentName" studentName="张三"></StudentCom>
+    <StudentCom @atguigu="getStudentName" studentName="里斯"></StudentCom>
     <StudentCom ref="student" studentName="测试同学"></StudentCom>
   </div>
 </template>
