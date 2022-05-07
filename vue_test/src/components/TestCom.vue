@@ -25,20 +25,20 @@ h3 {
 }
 
 .hello-enter-active {
-  animation: atguigu 1s;
+  animation: atguigu 0.5s linear;
 }
 
 .hello-leave-active {
-  animation: atguigu 1s reverse;
+  animation: atguigu 0.5s linear reverse;
 }
 
 @keyframes atguigu {
   from {
-    transform: -100%;
+    transform: translateX(-100%);
   }
 
   to {
-    transform: 0px;
+    transform: translateX(0%);
   }
 }
 </style>
