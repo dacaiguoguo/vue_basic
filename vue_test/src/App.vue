@@ -2,12 +2,7 @@
   <div>
     <HeaderCom @addOne="addOne"></HeaderCom>
     <hr />
-    <ListCom
-      name="ListCom"
-      :todoList="todoList"
-      :changeItem="changeItem"
-      :deleteItem="deleteItem"
-    ></ListCom>
+    <ListCom name="ListCom" :todoList="todoList"></ListCom>
     <hr />
     <FooterCom
       v-show="todoList.length"
@@ -80,6 +75,14 @@ export default {
         window.localStorage.setItem("todos", JSON.stringify(value));
       },
     },
+  },
+  mounted() {
+    this.$bus.$on("changeItem", this.changeItem);
+    this.$bus.$on("deleteItem", this.deleteItem);
+  },
+  beforeDestroy() {
+    this.$bus.$off("changeItem");
+    this.$bus.$off("deleteItem");
   },
   components: {
     FooterCom,

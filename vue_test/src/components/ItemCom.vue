@@ -11,15 +11,15 @@ export default {
   name: "ItemCom",
   methods: {
     change() {
-      this.changeItem(this.item.id);
+      this.$bus.$emit('changeItem', this.item.id);
     },
     deleteAction() {
       if(confirm("你确认删除吗？")) {
-        this.deleteItem(this.item.id)
+        this.$bus.$emit('deleteItem', this.item.id);
       }
     }
   },
-  props: ["item", "changeItem", "deleteItem"],
+  props: ["item"],
 };
 </script>
 

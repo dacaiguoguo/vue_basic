@@ -5,8 +5,6 @@
         v-for="todoitem in todoList"
         :key="todoitem.id"
         :item="todoitem"
-        :changeItem="changeItem"
-        :deleteItem="deleteItem"
       ></ItemCom>
     </ul>
   </div>
@@ -20,7 +18,7 @@ export default {
   components: {
     ItemCom,
   },
-  props: ["todoList", "deleteItem", "changeItem"],
+  props: ["todoList"],
 };
 </script>
 
