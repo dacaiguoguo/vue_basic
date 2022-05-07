@@ -1,42 +1,90 @@
 <template>
   <div>
-    <h2>{{ msg }}</h2>
+    <HeaderCom @addOne="addOne"></HeaderCom>
     <hr />
-    <SchoolCom :getSchoolName="getSchoolName"></SchoolCom>
-    <StudentCom v-on:atguigu="getStudentName" studentName="张三"></StudentCom>
-    <StudentCom @atguigu="getStudentName" studentName="里斯"></StudentCom>
-    <StudentCom ref="student" studentName="测试同学"></StudentCom>
+    <ListCom
+      name="ListCom"
+      :todoList="todoList"
+      :changeItem="changeItem"
+      :deleteItem="deleteItem"
+    ></ListCom>
+    <hr />
+    <FooterCom
+      v-show="todoList.length"
+      :doneNum="doneNum"
+      :allNUm="todoList.length"
+      @checkAll="checkAll"
+      @clearAll="clearAll"
+    ></FooterCom>
   </div>
 </template>
 
 <script>
-import SchoolCom from "./components/SchoolCom.vue";
-import StudentCom from "./components/StudentCom.vue";
-
+import HeaderCom from "./components/HeaderCom.vue";
+import ListCom from "./components/ListCom.vue";
+import FooterCom from "./components/FooterCom.vue";
+import { nanoid } from "nanoid";
 export default {
   name: "App",
   data() {
     return {
-      msg: "你好啊！！！",
+      todoList: JSON.parse(window.localStorage.getItem("todos")) || [],
+      // todoList: [
+      //   { id: "001", title: "吃饭", done: true },
+      //   { id: "002", title: "睡觉", done: false },
+      //   { id: "003", title: "喝水", done: true },
+      // ],
     };
   },
   methods: {
-    getSchoolName(value) {
-      console.log(value);
+    addOne(value) {
+      this.todoList.unshift({
+        id: nanoid(),
+        title: value,
+        done: false,
+      });
     },
-    getStudentName(value) {
-      console.log("getStudentName");
-      console.log(value);
-      // console.log(this.$refs.student);
+    changeItem(eitemid) {
+      this.todoList.forEach((item) => {
+        if (item.id === eitemid) {
+          item.done = !item.done;
+        }
+      });
+    },
+    deleteItem(eitemid) {
+      this.todoList = this.todoList.filter((item) => {
+        return item.id !== eitemid;
+      });
+    },
+    checkAll(val) {
+      this.todoList.forEach((item) => {
+        item.done = val;
+      });
+    },
+    clearAll() {
+      this.todoList = this.todoList.filter((item) => {
+        return !item.done;
+      });
+      console.log(this.todoList);
+    },
+  },
+  computed: {
+    doneNum() {
+      return this.todoList.reduce((pre, todo) => pre + (todo.done ? 1 : 0), 0);
+    },
+  },
+  watch: {
+    todoList: {
+      deep: true,
+      handler(value) {
+        window.localStorage.setItem("todos", JSON.stringify(value));
+      },
     },
   },
   components: {
-    SchoolCom,
-    StudentCom,
-  },
-  mounted() {
-    this.$refs.student.$on("atguigu",this.getStudentName);
-    // this.$refs.student.$once("atguigu", this.getStudentName);
+    FooterCom,
+    ListCom,
+    HeaderCom,
   },
 };
 </script>
