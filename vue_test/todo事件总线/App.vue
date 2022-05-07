@@ -11,18 +11,14 @@
       @checkAll="checkAll"
       @clearAll="clearAll"
     ></FooterCom>
-    <TestCom />
   </div>
 </template>
 
 <script>
-import { nanoid } from "nanoid";
-import PubSub from "pubsub-js";
 import HeaderCom from "./components/HeaderCom.vue";
 import ListCom from "./components/ListCom.vue";
 import FooterCom from "./components/FooterCom.vue";
-import TestCom from "./components/TestCom.vue";
-
+import { nanoid } from "nanoid";
 export default {
   name: "App",
   data() {
@@ -64,6 +60,7 @@ export default {
       this.todoList = this.todoList.filter((item) => {
         return !item.done;
       });
+      console.log(this.todoList);
     },
   },
   computed: {
@@ -82,24 +79,15 @@ export default {
   mounted() {
     this.$bus.$on("changeItem", this.changeItem);
     this.$bus.$on("deleteItem", this.deleteItem);
-    this.pubid = PubSub.subscribe("hello", (msg, data) => {
-      console.log("有人发布了hello事件");
-      console.log(msg, data);
-    });
   },
   beforeDestroy() {
     this.$bus.$off("changeItem");
     this.$bus.$off("deleteItem");
-    PubSub.unsubscribe(this.pubid);
   },
   components: {
     FooterCom,
     ListCom,
     HeaderCom,
-    TestCom,
   },
 };
 </script>
-
-<style lang="css">
-</style>

@@ -7,22 +7,18 @@
 </template>
 
 <script>
-import PubSub from "pubsub-js";
 export default {
   name: "ItemCom",
   methods: {
     change() {
-      this.$bus.$emit("changeItem", this.item.id);
+      this.$bus.$emit('changeItem', this.item.id);
     },
     deleteAction() {
-      // publish a topic asynchronously
-      PubSub.publish("hello", "hello world!");
-      if (confirm("你确认删除吗？")) {
-        this.$bus.$emit("deleteItem", this.item.id);
+      if(confirm("你确认删除吗？")) {
+        this.$bus.$emit('deleteItem', this.item.id);
       }
-    },
+    }
   },
-  mounted() {},
   props: ["item"],
 };
 </script>

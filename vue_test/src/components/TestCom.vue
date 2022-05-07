@@ -1,0 +1,44 @@
+<template>
+  <div class="demo">
+    <button @click="isShow = !isShow">点我变变</button>
+    <transition name="hello">
+      <h3 v-show="isShow">{{ msg }}</h3>
+    </transition>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "TestCom",
+  data() {
+    return {
+      msg: "你好啊都是雷锋精神",
+      isShow: true,
+    };
+  },
+};
+</script>
+
+<style lang="css" scoped>
+h3 {
+  background-color: orange;
+}
+
+.hello-enter-active {
+  animation: atguigu 1s;
+}
+
+.hello-leave-active {
+  animation: atguigu 1s reverse;
+}
+
+@keyframes atguigu {
+  from {
+    transform: -100%;
+  }
+
+  to {
+    transform: 0px;
+  }
+}
+</style>
