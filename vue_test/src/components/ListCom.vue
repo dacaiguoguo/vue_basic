@@ -9,7 +9,7 @@
     </ul>
     <h1 v-show="info.isFirst">你好啊</h1>
     <h1 v-show="info.isLoading">加载中......</h1>
-    <h1 v-show="info.errMsg">{{errMsg}}</h1>
+    <h1 v-show="info.errMsg">{{info.errMsg}}</h1>
   </div>
 </template>
 

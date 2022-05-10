@@ -23,8 +23,10 @@ export default {
           isLoading: true,
           errMsg: "",
         });
+        const tempUrl = `https://api.github.com/users?${this.inputValue.trim()}`
+        console.log(tempUrl)
         axios
-          .get(`https://api.github.com/users?${this.inputValue.trim()}`)
+          .get(tempUrl)
           .then((res) => {
             this.$bus.$emit("addOne", {
               todoList: res.data,
