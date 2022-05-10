@@ -1,15 +1,12 @@
 <template>
   <div>
-    <input
-      type="text"
-      placeholder="请输入后回车添加"
-      v-model="inputValue"
-      @keyup.enter="addOneTodo()"
-    />
+    <input type="text" placeholder="请输入" v-model="inputValue" />
+    <button @click="searchAction">搜索</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "HeaderCom",
   data() {
@@ -18,12 +15,37 @@ export default {
     };
   },
   methods: {
-    addOneTodo() {
+    searchAction() {
       if (this.inputValue.trim().length > 0) {
-        this.$emit('addOne', this.inputValue.trim());
+        this.$bus.$emit("addOne", {
+          todoList: [],
+          isFirst: false,
+          isLoading: true,
+          errMsg: "",
+        });
+        axios
+          .get(`https://api.github.com/users?${this.inputValue.trim()}`)
+          .then((res) => {
+            this.$bus.$emit("addOne", {
+              todoList: res.data,
+              isFirst: false,
+              isLoading: false,
+              errMsg: "",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            this.$bus.$emit("addOne", {
+              todoList: [],
+              isFirst: false,
+              isLoading: false,
+              errMsg: "error",
+            });
+          });
+
         this.inputValue = "";
       } else {
-        alert('请输入内容后再回车')
+        alert("请输入内容后再搜索");
       }
     },
   },

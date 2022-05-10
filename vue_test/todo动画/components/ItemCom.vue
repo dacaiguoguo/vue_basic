@@ -1,9 +1,8 @@
 <template>
   <li>
-    <a :href="item.html_url">
-      {{ item.login }}
-      <img :src="item.avatar_url" alt="avatar_url" width="66" />
-    </a>
+    <input type="checkbox" :checked="item.done" @click="change()" />
+    <span>{{ item.title }}</span>
+    <button class="deletebtn" @click="deleteAction">删除</button>
   </li>
 </template>
 
@@ -31,8 +30,8 @@ export default {
 <style scope>
 li {
   list-style-type: none;
-  height: 66px;
-  line-height: 66px;
+  height: 36px;
+  line-height: 36px;
   padding: 0 5px;
   border-bottom: 1px solid #ddd;
 }
@@ -46,10 +45,6 @@ li button {
   display: none;
   margin-top: 3px;
   background-color: orange;
-}
-
-li img {
-  float: right;
 }
 
 li:before {
