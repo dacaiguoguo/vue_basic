@@ -1,16 +1,14 @@
 <template>
   <div class="itemlist">
     <h3>{{ title }}</h3>
-    <ul>
-      <li v-for="(d, index) in dataList" :key="index">{{d}}</li>
-    </ul>
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
   name: "CategoryCom",
-  props: ["title", "dataList"],
+  props: ["title"],
 };
 </script>
 
