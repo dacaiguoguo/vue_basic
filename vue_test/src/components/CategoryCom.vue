@@ -1,7 +1,8 @@
 <template>
   <div class="itemlist">
     <h3>{{ title }}</h3>
-    <slot></slot>
+    <slot name="midslot"></slot>
+    <slot name="footer"></slot>
   </div>
 </template>
 

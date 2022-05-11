@@ -1,20 +1,24 @@
 <template>
   <div class="category">
     <CategoryCom title="美食" :dataList="dataList[0]">
-      <img
-        src="http://wis-img1.lvmama.com/20220411/fecc3a09-9fe6-4075-8228-4435608ce1eb6136554755235628625.png"
+      <img slot="midslot"
+        src="http://img1.youqianshan.com/lego/back/202203/1647939594609.png"
+        alt="image"
+      />
+      <img slot="footer"
+        src="http://img2.youqianshan.com/lego/back/202203/1647939583850.png"
         alt="image"
       />
     </CategoryCom>
     <CategoryCom title="游戏">
-      <ul>
+      <ul slot="midslot">
         <li v-for="(d, index) in dataList[1]" :key="index">{{ d }}</li>
       </ul>
     </CategoryCom>
     <CategoryCom title="电影" :dataList="dataList[2]">
-      <ul>
+      <ol slot="midslot">
         <li v-for="(d, index) in dataList[2]" :key="index">{{ d }}</li>
-      </ul>
+      </ol>
     </CategoryCom>
   </div>
 </template>
@@ -53,5 +57,6 @@ export default {
 }
 img {
   width: 100%;
+  height: 100px;
 }
 </style>
