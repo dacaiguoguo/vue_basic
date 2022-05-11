@@ -2,7 +2,8 @@
   <div class="itemlist">
     <h3>{{ title }}</h3>
     <slot name="midslot"></slot>
-    <slot name="footer"></slot>
+    <slot name="footer" :msg="msg"></slot>
+    <slot :msg="msg"></slot>
   </div>
 </template>
 
@@ -10,6 +11,11 @@
 export default {
   name: "CategoryCom",
   props: ["title"],
+  data() {
+    return {
+      "msg": "hello msg"
+    }
+  },
 };
 </script>
 
