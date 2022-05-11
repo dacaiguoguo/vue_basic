@@ -3,7 +3,7 @@
     <h3>{{ title }}</h3>
     <slot name="midslot"></slot>
     <slot name="footer" :msg="msg"></slot>
-    <slot :msg="msg"></slot>
+    <slot name="default1" :msg="msg"></slot>
   </div>
 </template>
 

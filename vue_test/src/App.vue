@@ -21,8 +21,9 @@
       <ol slot="midslot">
         <li v-for="(d, index) in dataList[2]" :key="index">{{ d }}</li>
       </ol>
-      <template scope="{msg}">
-        <h3>{{ msg }}</h3>
+
+      <template slot="default1" slot-scope="slotProps">
+        <h3>{{ slotProps.msg }}</h3>
       </template>
     </CategoryCom>
   </div>
