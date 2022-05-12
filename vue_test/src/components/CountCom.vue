@@ -9,8 +9,8 @@
       <option :value="5">5</option>
     </select>
     <button @click="addAction(n)">点我加一下</button>
-    <button @click="addOddAction">奇数加一下</button>
-    <button @click="addWaitAction">延时加一下</button>
+    <button @click="addOddAction(n)">奇数加一下</button>
+    <button @click="addWaitAction(n)">延时加一下</button>
     <h3>当前和为：{{ sum }}</h3>
     <h3>当前和10倍为：{{ bigSum }}</h3>
     <h3>我在 {{ school }} 学习 {{ subject }}</h3>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 export default {
   name: "CountCom",
   data() {
@@ -50,13 +50,14 @@ export default {
     // addAction() {
     //   this.$store.dispatch("jia", this.n);
     // },
-    ...mapMutations({addAction: 'JIA'}),
-    addOddAction() {
-      this.$store.dispatch("jiaOdd", this.n);
-    },
-    addWaitAction() {
-      this.$store.dispatch("jiaWait", this.n);
-    },
+    ...mapMutations({ addAction: "JIA" }),
+    // addOddAction() {
+    //   this.$store.dispatch("jiaOdd", this.n);
+    // },
+    // addWaitAction() {
+    //   this.$store.dispatch("jiaWait", this.n);
+    // },
+    ...mapActions({ addOddAction: "jiaOdd", addWaitAction: "jiaWait" }),
   },
 };
 </script>
