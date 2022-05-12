@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: "CountCom",
   data() {
@@ -26,17 +27,20 @@ export default {
     };
   },
   computed: {
-    sum() {
-      return this.$store.state.sum;
-    },
+    // 靠程序员自己实现计算属性比较麻烦 需要用 mapState
+    // sum() {
+    //   return this.$store.state.sum;
+    // },
+    // school() {
+    //   return this.$store.state.school;
+    // },
+    // subject() {
+    //   return this.$store.state.subject;
+    // },
+    // 用mapState 实现比较简单，生成的function 用...语法从State里读取摊平到计算属性里。用mapState对象写法
+    ...mapState({sum: 'sum', school: 'school', subject: 'subject'}),
     bigSum() {
       return this.$store.getters.bigSum;
-    },
-    school() {
-      return this.$store.state.school;
-    },
-    subject() {
-      return this.$store.state.subject;
     },
   },
   methods: {
