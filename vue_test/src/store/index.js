@@ -42,7 +42,12 @@ const getters = {
     }
 }
 
-const state = { sum: 0 }
+const state = {
+    sum: 0,
+    school: "好学校",
+    subject: "机械制造"
+}
+
 const store = new Vuex.Store({
     actions,
     mutations,

@@ -11,8 +11,9 @@
     <button @click="addAction">点我加一下</button>
     <button @click="addOddAction">奇数加一下</button>
     <button @click="addWaitAction">延时加一下</button>
-    <h3>当前和为：{{ $store.state.sum }}</h3>
-    <h3>当前和10倍为：{{$store.getters.bigSum}}</h3>
+    <h3>当前和为：{{ sum }}</h3>
+    <h3>当前和10倍为：{{ bigSum }}</h3>
+    <h3>我在 {{ school }} 学习 {{ subject }}</h3>
   </div>
 </template>
 
@@ -23,6 +24,20 @@ export default {
     return {
       n: 1,
     };
+  },
+  computed: {
+    sum() {
+      return this.$store.state.sum;
+    },
+    bigSum() {
+      return this.$store.getters.bigSum;
+    },
+    school() {
+      return this.$store.state.school;
+    },
+    subject() {
+      return this.$store.state.subject;
+    },
   },
   methods: {
     addAction() {
