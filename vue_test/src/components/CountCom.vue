@@ -8,7 +8,7 @@
       <option :value="4">4</option>
       <option :value="5">5</option>
     </select>
-    <button @click="addAction">点我加一下</button>
+    <button @click="addAction(n)">点我加一下</button>
     <button @click="addOddAction">奇数加一下</button>
     <button @click="addWaitAction">延时加一下</button>
     <h3>当前和为：{{ sum }}</h3>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 export default {
   name: "CountCom",
   data() {
@@ -41,14 +41,16 @@ export default {
     // ...mapState({ sum: "sum", school: "school", subject: "subject" }),
     // 用mapState数组写法
     ...mapState(["sum", "school", "subject"]),
-    bigSum() {
-      return this.$store.getters.bigSum;
-    },
+    ...mapGetters(["bigSum"]),
+    // bigSum() {
+    //   return this.$store.getters.bigSum;
+    // },
   },
   methods: {
-    addAction() {
-      this.$store.dispatch("jia", this.n);
-    },
+    // addAction() {
+    //   this.$store.dispatch("jia", this.n);
+    // },
+    ...mapMutations({addAction: 'JIA'}),
     addOddAction() {
       this.$store.dispatch("jiaOdd", this.n);
     },
