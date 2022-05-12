@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 export default {
   name: "CountCom",
   data() {
@@ -38,7 +38,9 @@ export default {
     //   return this.$store.state.subject;
     // },
     // 用mapState 实现比较简单，生成的function 用...语法从State里读取摊平到计算属性里。用mapState对象写法
-    ...mapState({sum: 'sum', school: 'school', subject: 'subject'}),
+    // ...mapState({ sum: "sum", school: "school", subject: "subject" }),
+    // 用mapState数组写法
+    ...mapState(["sum", "school", "subject"]),
     bigSum() {
       return this.$store.getters.bigSum;
     },
