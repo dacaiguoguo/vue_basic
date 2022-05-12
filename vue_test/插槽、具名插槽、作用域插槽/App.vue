@@ -22,7 +22,7 @@
         <li v-for="(d, index) in dataList[2]" :key="index">{{ d }}</li>
       </ol>
 
-      <template slot="default1" slot-scope="{ msg }">
+      <template slot="default1" slot-scope="{msg}">
         <h3>{{ msg }}</h3>
       </template>
     </CategoryCom>
@@ -45,10 +45,8 @@ export default {
   },
   methods: {},
   computed: {},
-  mounted() {
-    console.log(this)
-  },
   watch: {},
+  mounted() {},
   beforeDestroy() {},
   components: {
     CategoryCom,
