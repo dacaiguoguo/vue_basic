@@ -14,6 +14,8 @@
     <h3>当前和为：{{ sum }}</h3>
     <h3>当前和10倍为：{{ bigSum }}</h3>
     <h3>我在 {{ school }} 学习 {{ subject }}</h3>
+
+    <h3 style="color:red">总人数：{{ personList.length }}</h3>
   </div>
 </template>
 
@@ -40,7 +42,7 @@ export default {
     // 用mapState 实现比较简单，生成的function 用...语法从State里读取摊平到计算属性里。用mapState对象写法
     // ...mapState({ sum: "sum", school: "school", subject: "subject" }),
     // 用mapState数组写法
-    ...mapState(["sum", "school", "subject"]),
+    ...mapState(["sum", "school", "subject", "personList"]),
     ...mapGetters(["bigSum"]),
     // bigSum() {
     //   return this.$store.getters.bigSum;

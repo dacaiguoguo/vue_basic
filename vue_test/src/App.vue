@@ -1,11 +1,14 @@
 <template>
   <div class="category">
     <CountCom></CountCom>
+    <hr/>
+    <PersonCom/>
   </div>
 </template>
 
 <script>
 import CountCom from "./components/CountCom";
+import PersonCom from "./components/PersonCom";
 
 export default {
   name: "App",
@@ -15,7 +18,7 @@ export default {
   watch: {},
   beforeDestroy() {},
   components: {
-    CountCom,
+    CountCom,PersonCom
   },
 };
 </script>

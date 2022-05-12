@@ -19,21 +19,30 @@ const actions = {
             context.commit("JIAWAIT", value)
         }, 500);
     },
+    addPerson(context, value) {
+        console.log("ADD_PERSON")
+        context.commit("ADD_PERSON", value)
+    },
+
 
 }
 const mutations = {
-    JIA(context, value) {
-        console.log("JIA++", context, value)
-        context.sum += value
+    JIA(state, value) {
+        console.log("JIA++", state, value)
+        state.sum += value
     },
-    JIAODD(context, value) {
+    JIAODD(state, value) {
         console.log("JIAODD++", value)
-        context.sum += value
+        state.sum += value
     },
-    JIAWAIT(context, value) {
+    JIAWAIT(state, value) {
         console.log("JIAWAIT++", value)
-        context.sum += value
-    }
+        state.sum += value
+    },
+    ADD_PERSON(state, personOjb) {
+        console.log("ADD_PERSON++", personOjb)
+        state.personList.unshift(personOjb)
+    },
 }
 
 const getters = {
@@ -45,7 +54,10 @@ const getters = {
 const state = {
     sum: 0,
     school: "好学校",
-    subject: "机械制造"
+    subject: "机械制造",
+    personList: [
+        { id:'001', name: '张三' }
+    ]
 }
 
 const store = new Vuex.Store({
