@@ -35,11 +35,19 @@ const mutations = {
         context.sum += value
     }
 }
+
+const getters = {
+    bigSum(state) {
+        return state.sum * 10
+    }
+}
+
 const state = { sum: 0 }
 const store = new Vuex.Store({
     actions,
     mutations,
-    state
+    state,
+    getters
 })
 
 export default store

@@ -12,6 +12,7 @@
     <button @click="addOddAction">奇数加一下</button>
     <button @click="addWaitAction">延时加一下</button>
     <h3>当前和为：{{ $store.state.sum }}</h3>
+    <h3>当前和10倍为：{{$store.getters.bigSum}}</h3>
   </div>
 </template>
 
