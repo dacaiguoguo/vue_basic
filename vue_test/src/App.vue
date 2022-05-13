@@ -1,15 +1,24 @@
 <template>
-  <div class="category">
-    <h3>Hello</h3>
-    <HomeCom></HomeCom>
-    <hr />
-    <AboutCom></AboutCom>
-
+  <div>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-8">
+        <div class="page-header"><h2>Vue Router Demo</h2></div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-xs-2 col-xs-offset-2">
         <div class="list-group">
-          <a class="list-group-item active" href="">About</a>
-          <a class="list-group-item" href="">Home</a>
+          <router-link class="list-group-item" active-class="active" to=""
+            >About</router-link>
+          <router-link class="list-group-item" to=""
+            >Home</router-link>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="panel">
+          <div class="panel-body">
+            <router-view></router-view>
+          </div>
         </div>
       </div>
     </div>
@@ -24,13 +33,12 @@ export default {
   name: "App",
   methods: {},
   computed: {},
-  mounted() {},
+  mounted() {
+    console.log(this);
+  },
   watch: {},
   beforeDestroy() {},
-  components: {
-    HomeCom,
-    AboutCom,
-  },
+  components: {},
 };
 </script>
 
