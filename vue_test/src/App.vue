@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-xs-offset-2 col-xs-8">
-        <div class="page-header"><h2>Vue Router Demo</h2></div>
-      </div>
-    </div>
+    <BannerCom />
+
     <div class="row">
       <div class="col-xs-2 col-xs-offset-2">
         <div class="list-group">
@@ -28,8 +25,7 @@
 </template>
 
 <script>
-import HomeCom from "./components/HomeCom";
-import AboutCom from "./components/AboutCom";
+import BannerCom from "./components/BannerCom";
 
 export default {
   name: "App",
@@ -40,7 +36,7 @@ export default {
   },
   watch: {},
   beforeDestroy() {},
-  components: {},
+  components: { BannerCom },
 };
 </script>
 

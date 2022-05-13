@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router'
-import HomeCom from "../components/HomeCom";
-import AboutCom from "../components/AboutCom";
+import HomeCom from "../pages/HomeCom";
+import AboutCom from "../pages/AboutCom";
 
 
 export default new VueRouter({
