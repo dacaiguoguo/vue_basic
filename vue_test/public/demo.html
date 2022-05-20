@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      .d1{
+        background-color: rebeccapurple;
+      }
+      /* ul>li:last-child{
+        color: tomato;
+      } */
+      ul>li:nth-child(odd){
+        color: tomato;
+      }
+      /* even和2n一样 */
+      /* ul>li:nth-child(2n){
+        color: tomato;
+      } */
+      ul>li:nth-child(2n+1){
+        color: tomato;
+      }
+      /* ul>li:nth-child(even){
+        color: tomato;
+      } */
+      .box1{
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div>我是div</div>
+    <div class="box1"></div>
+    <ul>
+      <li>第一个</li>
+      <li>第二个</li>
+      <li>第三个</li>
+      <li>第四个</li>
+      <li>第五个</li>
+    </ul>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+
+  <script>
+
+    function calltest(useInfoString) {
+      console.log("@@++")
+      // const userInfo = JSON.parse(useInfoString)
+      
+      // const token = userInfo['sessionId']
+      // console.log("@@", { userInfo, token })
+      
+    }
+    calltest()
+    
+  </script>
+</html>
