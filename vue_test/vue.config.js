@@ -7,6 +7,12 @@ module.exports = defineConfig({
     // app: {
     //   name: 'google-chrome',
     // },
+    proxy:{
+      '/api': {
+        target: 'https://api.youqianshan.com',
+        changeOrigin: true
+      },
+    }
   },
   lintOnSave:false,
 })
