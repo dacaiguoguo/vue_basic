@@ -7,17 +7,45 @@
     </div>
     <div class="productInfo">
       <h3>
-        {{ product.productName }}<span>[{{ product.star }}]</span>
+        {{ product.productName
+        }}<span v-show="product.star">[{{ product.star }}]</span>
       </h3>
-      <h3>
+      <div class="place-info" @click="goplaceinfo">
+        <div class="left-info">
+          <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span
+          ><span style="margin-left: 10px">景区简介</span>
+        </div>
+        <div class="right-info">
+          <span class="val_line">|</span>
+          <span class="detail_text">详情</span>
+          <span
+            class="glyphicon glyphicon-menu-right"
+            aria-hidden="true"
+          ></span>
+        </div>
+
+        <ul>
+          <li v-for="item in equipmentVos" :key="item">
+            <span
+              class="glyphicon glyphicon-exclamation-sign"
+              aria-hidden="true"
+            ></span>
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+      <div class="place-addinfo">
         <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span
-        >景区简介
-      </h3>
+        ><span style="margin-left: 10px">{{ product.address }}</span>
+      </div>
     </div>
 
-    <ul>
-      <li>商品列表</li>
-    </ul>
+    <div class="goodsection">
+      <h3>景点门票</h3>
+      <ul class="goodlist">
+        <li>商品列表</li>
+      </ul>
+    </div>
     <div class="footerInfo">底部保障信息</div>
   </div>
 </template>
@@ -30,6 +58,7 @@ export default {
     return {
       title: "产品详情",
       product: {},
+      goodlist: [],
     };
   },
   computed: {
@@ -44,6 +73,21 @@ export default {
         return [];
       }
     },
+    equipmentVos() {
+      if (this.product["equipmentVos"]) {
+        const list = this.product["equipmentVos"].map((params) => {
+          return params["equipmentName"];
+        });
+        return list.slice(0, 3);
+      } else {
+        return [];
+      }
+    },
+  },
+  methods: {
+    goplaceinfo(){
+      console.log("goplaceinfo");
+    }
   },
   created() {
     //   https://api.youqianshan.com/api/m/ticket/goods
@@ -58,27 +102,75 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+    const data = { productId: "124411637", bizCategoryId: 11, districtId: "" };
+    axios
+      .post("/api/m/ticket/goods", data)
+      .then((res) => {
+        this.goodlist = res.data["data"];
+        console.log(res);
+        console.log(this.goodlist);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>
 
 <style>
 .pageWapper {
-  width: 375px;
+  width: 390px;
   margin: 0 auto;
-  background-color: #f4f4f4;
+  background-color: white;
+}
+.productInfo {
+  padding: 0px 15px 10px 10px;
 }
 .productInfo > h3 {
-  font-size: 1.25rem;
+  color: #222;
+  font-size: 20.8px;
 }
 .productInfo > h3 > span {
-  font-size: 0.875rem;
+  margin-left: 3px;
+  color: #222;
+  font-size: 14.56px;
 }
 .banner {
+  border: 3px solid gold;
   height: 10rem;
   overflow-x: scroll;
 }
 .banner > img {
   width: 100%;
+}
+.place-info {
+  overflow: hidden;
+}
+.left-info {
+  float: left;
+}
+.right-info {
+  float: right;
+}
+.place-info > ul {
+  padding-left: 10px;
+  clear: both;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+}
+.place-info > ul > li {
+  /* float: left; */
+  margin-left: 30px;
+  color: #888;
+}
+
+.goodsection {
+  border-top: 10px solid #f4f4f4;
+}
+.goodlist {
+  margin-top: 20px;
+  padding-left: 10px;
+  list-style: none;
 }
 </style>
