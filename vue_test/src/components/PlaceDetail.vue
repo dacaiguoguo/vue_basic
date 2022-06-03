@@ -63,7 +63,7 @@ export default {
   },
   computed: {
     bannerImages() {
-      if (this.product["ticketProductImageBaseVos"]) {
+      if (this.product.ticketProductImageBaseVos) {
         const list = this.product["ticketProductImageBaseVos"].map((params) => {
           return params.photoUrl;
         });
@@ -119,7 +119,6 @@ export default {
 
 <style>
 .pageWapper {
-  width: 390px;
   margin: 0 auto;
   background-color: white;
 }
@@ -128,7 +127,8 @@ export default {
 }
 .productInfo > h3 {
   color: #222;
-  font-size: 20.8px;
+  font-size: 1.125rem;
+  text-size-adjust:100%;
 }
 .productInfo > h3 > span {
   margin-left: 3px;

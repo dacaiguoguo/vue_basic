@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href="lvmamatech://web.youqianshan.com/product/other/notice?productId=100122624&packageId=1000180864">酒店套餐预定须知</a>
+    </div>
+    <div>
+        <a href="https://web.youqianshan.com/wxsdklvtour/syg/">测试通用链接</a>
+    </div>
+    <div>
+        <a href="lvmamatech://web.youqianshan.com/commentList/124411637">测试点评列表</a>
+    </div>
+    <div>
+        <a href="lvmamatech://web.youqianshan.com/lego?templateId=737">游潜山测试乐高</a>
+    </div>
+
+    <div>
+        <a href="lvmamatech://web.youqianshan.com/qrcode">游潜山扫码</a>
+    </div>
+
+    <div>
+        <a href="lvmamatech://web.youqianshan.com/delicacies/detail/100122632">美食产品描述</a>
+    </div>
+
+    <div>
+        <p>输入后点击下面的链接</p>
+        <input type="text" id="templateid" oninput="inputTemplateId()">
+        <div id="templateidlink">
+           
+        </div>
+    </div>
+    <script>
+        function inputTemplateId() {
+            const input = document.querySelector("#templateid").value
+            console.log("AAA", input)
+            document.querySelector("#templateidlink").innerHTML = `<a id="templateidlink" href="lvmamatech://web.youqianshan.com/lego?templateId=${input}">游潜山乐高${input}</a>`
+        }
+    </script>
+</body>
+
+</html>

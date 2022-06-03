@@ -1,0 +1,38 @@
+{
+    "errcode": 0,
+    "errmsg": "ok",
+    "userid": "sunyanguo",
+    "name": "孙彦国",
+    "department": [
+        426
+    ],
+    "position": "架构师",
+    "mobile": "15821722746",
+    "gender": "1",
+    "email": "sunyanguo@lvmama.com",
+    "avatar": "https://wework.qpic.cn/wwpic/450042_SAugPajLSq2AKVb_1653014480/0",
+    "status": 1,
+    "isleader": 0,
+    "extattr": {
+        "attrs": []
+    },
+    "english_name": "大菜果果",
+    "telephone": "13564507052",
+    "enable": 1,
+    "hide_mobile": 0,
+    "order": [
+        0
+    ],
+    "external_profile": {
+        "external_attr": [],
+        "external_corp_name": "景域文化股份"
+    },
+    "main_department": 426,
+    "qr_code": "https://open.work.weixin.qq.com/wwopen/userQRCode?vcode=vc2c09edba62bd848e",
+    "alias": "大菜果果",
+    "is_leader_in_dept": [
+        0
+    ],
+    "thumb_avatar": "https://wework.qpic.cn/wwpic/450042_SAugPajLSq2AKVb_1653014480/0",
+    "direct_leader": []
+}
