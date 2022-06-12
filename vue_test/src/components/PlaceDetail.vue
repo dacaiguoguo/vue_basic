@@ -1,10 +1,17 @@
 <template>
   <div class="pageWapper">
     <H3>产品详情</H3>
-    <div class="banner">
+    <ul class="banner">
       <!-- <img src="http://wis-img2.lvmama.com/20210517/ce65264d-ac09-4d39-8ac4-aa04a779fd4d737746740401453590.jpg?imageMogr2/thumbnail/!60p" alt="" /> -->
-      <img v-for="image in bannerImages" :key="image" :src="image" alt="" />
-    </div>
+      <li v-for="(image, index) in bannerImages" :key="image" :class="currentClass(index)" >
+        <img :src="image" alt="" />
+      </li>
+      <nav>
+        <button @click="changeImage(index)" v-for="(image, index) in bannerImages" :key="image">
+        {{index}}
+        </button>
+      </nav>
+    </ul>
     <div class="productInfo">
       <h3>
         {{ product.productName
@@ -58,6 +65,7 @@ export default {
     return {
       title: "产品详情",
       product: {},
+      imageIndex:0,
       goodlist: [],
     };
   },
@@ -85,8 +93,19 @@ export default {
     },
   },
   methods: {
-    goplaceinfo(){
+    goplaceinfo() {
       console.log("goplaceinfo");
+    },
+    changeImage(index) {
+      console.log("index", index);
+      this.imageIndex = index;
+    },
+    currentClass(index){
+      if(index == this.imageIndex) {
+        return "currentImage"
+      } else {
+        return "normal"
+      }
     }
   },
   created() {
@@ -128,7 +147,7 @@ export default {
 .productInfo > h3 {
   color: #222;
   font-size: 1.125rem;
-  text-size-adjust:100%;
+  text-size-adjust: 100%;
 }
 .productInfo > h3 > span {
   margin-left: 3px;
@@ -137,10 +156,34 @@ export default {
 }
 .banner {
   border: 3px solid gold;
-  height: 10rem;
-  overflow-x: scroll;
+  height: 20rem;
+  /* overflow-x: scroll; */
+  position: relative;
 }
-.banner > img {
+nav {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 9999;
+}
+nav>button{
+  padding: 0 10px;
+}
+ul {
+  list-style-type: none;
+}
+.currentImage{
+  z-index: 1;
+}
+li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+img {
   width: 100%;
 }
 .place-info {

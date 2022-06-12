@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JD Banner
+    </title>
+    <style>
+        section {
+            width: 590px;
+            height: 470px;
+            background-color: #bfa;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section>div {
+            position: absolute;
+        }
+
+        nav {
+            width: 590px;
+            height: 50px;
+            background-color: rgb(56, 117, 240);
+            margin: 0 auto;
+        }
+
+        nav>div {
+            float: left;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function clickAction(e) {
+            console.log("@@",e.innerText)
+        }
+    </script>
+</head>
+
+<body>
+    <section>
+        <div><img src="/img/f.jpg.webp" alt=""></div>
+        <div><img src="/img/q.jpg" alt=""></div>
+    </section>
+    <nav>
+        <div id="first" onclick="clickAction(this)">first</div>
+        <div id="second" onclick="clickAction(this)">second</div>
+    </nav>
+</body>
+
+</html>
