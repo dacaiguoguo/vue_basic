@@ -2,6 +2,7 @@
   <div class="hello">
     <button @click="callHandler">测试调用native方法</button>
     <p>{{ result }}</p>
+    <input type="text" placeholder="abcd">
   </div>
 </template>
 

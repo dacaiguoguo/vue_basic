@@ -26,7 +26,6 @@
     WKUserContentController *userContentController = [[WKUserContentController alloc] init];
     [userContentController addScriptMessageHandlerWithReply:self contentWorld:[WKContentWorld pageWorld] name:@"lvJSCallNativeHandlerReply"];
     config.userContentController = userContentController;
-
     self.mainWebview = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
     self.mainWebview.UIDelegate = self;
     self.mainWebview.navigationDelegate = self;
@@ -56,6 +55,11 @@
 //didFinish
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     self.progressView.hidden = YES;
+    [webView findString:@"abcd" withConfiguration:nil completionHandler:^(WKFindResult * _Nonnull result) {
+        if (result.matchFound) {
+            int fsd = 3;
+        }
+    }];
 }
 
 // didFaild
