@@ -156,7 +156,7 @@
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message
                  replyHandler:(void (^)(id _Nullable reply, NSString *_Nullable errorMessage))replyHandler {
-    if (![message.name isEqualToString:@"lvJSCallNativeHandler"]) {
+    if (![message.name isEqualToString:@"lvJSCallNativeHandlerReply"]) {
         return;
     }
     NSDictionary *dic = nil;
