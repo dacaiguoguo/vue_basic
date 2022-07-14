@@ -18,16 +18,17 @@ export default {
   },
   methods: {
     async callHandler() {
-      console.log("###", this);
-      //window.webkit.messageHandlers.lvJSCallNativeHandler.postMessage({"parameter":{}, "methodName":"lvJSGetUserInfo", "callbackId": "3803280"});
-      var promise =
-        window.webkit.messageHandlers.lvJSCallNativeHandlerReply.postMessage({
-          parameter: {},
-          methodName: "lvJSGetUserInfo",
-          callbackId: "3803280",
-        });
-      const response = await promise;
-      this.result = response;
+      if (window.webkit != undefined) {
+        var promise =
+          window.webkit.messageHandlers.lvJSCallNativeHandlerReply.postMessage({
+            parameter: {},
+            methodName: "lvJSGetUserInfo",
+            callbackId: "3803280",
+          });
+        const response = await promise;
+        this.result = response;
+        console.log("###", response);
+      }
     },
   },
 };

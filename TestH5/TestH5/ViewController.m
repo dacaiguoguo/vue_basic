@@ -182,10 +182,47 @@
         methodName = [methodName stringByAppendingString:@":"];
     }
     SEL methodSel = NSSelectorFromString(methodName);
-    replyHandler(@42, nil);
+    if ([self respondsToSelector:methodSel]) {
+        NSMethodSignature *methodSignature = [[self class] instanceMethodSignatureForSelector:methodSel];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+        invocation.selector = methodSel;
+        invocation.target = self;
+        id parameter = dic[@"parameter"];
+        BOOL validParameter = YES;
+        if (parameter) {
+            if (![parameter isKindOfClass:NSDictionary.class]) {
+                validParameter = NO;
+                replyHandler(nil, @"{\"status\": \"-3\",\"message\": \"parameter type is error\"}");
+            } else {
+                [invocation setArgument:&parameter atIndex:2];
+                [invocation retainArguments];
+            }
+        }
+        if (!validParameter) {
+            return;
+        }
+        [invocation invoke];
+        NSString *methodReturnTypeVoid = @"v";
+        NSString *methodReturnTypeObject = @"@";
+        NSString *methodReturnType  = @(methodSignature.methodReturnType);
+        if ([methodReturnType isEqualToString:methodReturnTypeVoid]) {
+            replyHandler(nil, @"{\"status\": \"-3\",\"message\": \"return type is void\"}");
+        } else if([methodReturnType isEqualToString:methodReturnTypeObject]) {
+            id __unsafe_unretained tempResultSet;
+            [invocation getReturnValue:&tempResultSet];
+            id returnValue = tempResultSet;
+            replyHandler(returnValue, nil);
+        } else {
+            replyHandler(nil, @"{\"status\": \"-5\",\"message\": \"return type is base type\"}");
+        }
+    }
 }
 
-- (void)lvJSGetUserInfo:(NSDictionary *)pamas {
-
+- (NSDictionary *)lvJSGetUserInfo:(NSDictionary *)pamas {
+    return @{
+        @"id": @"ewljl9fsl",
+        @"name": @"xiaoqiang",
+        @"age": @(18)
+    };
 }
 @end
